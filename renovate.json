@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommits"
+  ],
+  "schedule": [
+    "before 4am on Monday"
+  ],
+  "timezone": "America/Los_Angeles",
+  "dependencyDashboard": true,
+  "assignees": ["@schakravarti-twilio"],
+  "reviewers": ["@schakravarti-twilio"],
+  "commitMessagePrefix": "deps:",
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "description": "Auto-merge minor and patch updates",
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Major version updates require manual review",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "assignees": ["@schakravarti-twilio"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "labels": ["dependencies", "renovate"]
+}
